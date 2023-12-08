@@ -9,9 +9,9 @@ app.get('/', (req, res) => {
 })
 app.use($auth_router);
 // Option 3: Passing parameters separately (other dialects)
-const $SequelizeConnection = new Sequelize('tracker', 'root', 'root', {
+const $SequelizeConnection = new Sequelize('tracker', 'postgres', 'root', {
     host: 'localhost',
-    dialect: 'mysql'
+    dialect: 'postgres'
 });
 try {
     await $SequelizeConnection.authenticate();
