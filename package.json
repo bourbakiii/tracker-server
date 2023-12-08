@@ -21,5 +21,8 @@
   "bugs": {
     "url": "https://github.com/bourbakiii/tracker-server/issues"
   },
-  "homepage": "https://github.com/bourbakiii/tracker-server#readme"
+  "homepage": "https://github.com/bourbakiii/tracker-server#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
 }
