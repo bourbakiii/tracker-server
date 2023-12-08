@@ -1,0 +1,25 @@
+{
+  "name": "tracker-server",
+  "version": "1.0.0",
+  "description": "Node.js server for \"Omnia\" tracker (made with Express.js)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bourbakiii/tracker-server.git"
+  },
+  "keywords": [
+    "express",
+    "node",
+    "tracker",
+    "rest"
+  ],
+  "author": "bourbaki",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bourbakiii/tracker-server/issues"
+  },
+  "homepage": "https://github.com/bourbakiii/tracker-server#readme"
+}
