@@ -14,14 +14,15 @@ class UsersController {
         }
     }
     static async login(req,res){
-        // try{
-        //     const user = await User.create(req.body);
-        //     console.log("THE USER", user);
-        //     res.send(user);
-        // }
-        // catch (exception){
-        //     res.status(409).json({message: exception.errors?.[0]?.message});
-        // }
+
+        try{
+            const user = await User.create(req.body);
+            console.log("THE USER", user);
+            res.send(user);
+        }
+        catch (exception){
+            res.status(409).json({message: exception.errors?.[0]?.message});
+        }
     }
 }
 

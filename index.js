@@ -3,7 +3,7 @@ const connectToDatabase = require('./Sequelize');
 const dotenv = require('dotenv');
 const createTestUser = require("./Controllers/UsersController");
 const Joi = require('joi');
-const registrationSchema = require('./JOISchemas/AuthSchemas');
+const {registrationSchema, loginSchema} = require('./JOISchemas/AuthSchemas');
 const Validator = require("./validation/Validator");
 const UsersController = require("./Controllers/UsersController");
 dotenv.config();
@@ -19,6 +19,7 @@ app.get('/', (req, res) => {
 // Option 3: Passing parameters separately (other dialects)
 
 app.post('/auth/sign-up', $Validator.validate(registrationSchema), UsersController.create);
+app.post('/auth/sign-in', $Validator.validate(loginSchema), UsersController.login);
 
 
 

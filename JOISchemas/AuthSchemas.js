@@ -26,4 +26,18 @@ const registrationSchema = Joi.object({
     })
 });
 
-module.exports = registrationSchema;
+const loginSchema = Joi.object({
+    email: Joi.string().required().email()
+        .messages({
+            'string.empty': `"Email" не может быть пустым`,
+            'string.email': `"Email" не валиден`,
+            'any.required': `"Email" - обязательное поле`
+        }),
+    password: Joi.string().required().messages({
+        'string.empty': `"Password" не может быть пустым`,
+        'any.required': `"Password" - обязательное поле`
+    })
+});
+
+
+module.exports = {registrationSchema, loginSchema};
