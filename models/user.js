@@ -3,6 +3,7 @@ const {
     Model, DataTypes
 } = require('sequelize');
 const $SequelizeInstance = require('../Sequelize');
+const {hash} = require("bcrypt");
 module.exports = (sequelize = $SequelizeInstance) => {
     class User extends Model {
         /**
@@ -37,15 +38,12 @@ module.exports = (sequelize = $SequelizeInstance) => {
         sequelize,
         timestamps: false,
         modelName: 'User',
-            defaultScope: {
-                attributes: {exclude: ['password']},
-            }
+        defaultScope: {
+            attributes: {exclude: ['password']},
+        }
     });
-
-    User.afterCreate((user, options) => {
-        // Исключаем поле password перед созданием записи
-        delete user.dataValues.password;
-    });
+    User.beforeCreate(async ({dataValues}) => dataValues.password = await hash(dataValues.password, Number(process.env.PASSWORD_SALD)))
+    User.afterCreate((user, options) => delete user.dataValues.password);
 
     return User;
 };
