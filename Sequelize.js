@@ -1,8 +1,8 @@
 const { Sequelize } = require('sequelize');
 
-const $SequelizeInstance = new Sequelize('tracker', 'postgres', 'root', {
+const $SequelizeInstance = new Sequelize('tracker', 'root', '', {
     host: 'localhost',
-    dialect: 'postgres'
+    dialect: 'mysql'
 });
 async function connectToDatabase() {
     try {

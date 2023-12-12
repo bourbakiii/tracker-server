@@ -21,8 +21,6 @@ app.get('/', (req, res) => {
 app.post('/auth/sign-up', $Validator.validate(registrationSchema), UsersController.create);
 app.post('/auth/sign-in', $Validator.validate(loginSchema), UsersController.login);
 
-
-
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`)
     connectToDatabase();

@@ -3,7 +3,7 @@ const {
     Model, DataTypes
 } = require('sequelize');
 const $SequelizeInstance = require('../Sequelize');
-const {genSalt, hash} = require("bcrypt");
+const {hash, genSalt} = require("bcrypt");
 module.exports = (sequelize = $SequelizeInstance) => {
     class User extends Model {
         /**
@@ -38,14 +38,10 @@ module.exports = (sequelize = $SequelizeInstance) => {
         sequelize,
         timestamps: false,
         modelName: 'User',
-        defaultScope: {
-            attributes: {exclude: ['password']},
-        }
+
     });
     User.beforeCreate(async ({dataValues}) => {
-        const salt = await genSalt(Number(process.env.PASSWORD_SALD));
-        dataValues.password = await hash(dataValues.password, salt);
+        dataValues.password = await hash(dataValues.password, Number(process.env.PASSWORD_SALD));
     })
-
     return User;
 };
